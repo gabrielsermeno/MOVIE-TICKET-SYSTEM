@@ -12,6 +12,8 @@ function App() {
   const seatRows = ["A", "B", "C", "D", "E"];
   const seatsPerRow = 8;
 
+  const reservedSeats = ["A3", "A4", "B6", "C2", "C3", "D7", "E5"];
+
   function handleMovieSelection(movie) {
     setSelectedMovie(movie);
     setSelectedShowtime(null);
@@ -25,15 +27,19 @@ function App() {
     setSelectedSeats([]);
   }
 
-  function handleSeatClick(seatNumber) {
-    if (selectedSeats.includes(seatNumber)) {
-      setSelectedSeats(
-        selectedSeats.filter((seat) => seat !== seatNumber),
-      );
-    } else {
-      setSelectedSeats([...selectedSeats, seatNumber]);
-    }
+function handleSeatClick(seatNumber) {
+  if (reservedSeats.includes(seatNumber)) {
+    return;
   }
+
+  if (selectedSeats.includes(seatNumber)) {
+    setSelectedSeats(
+      selectedSeats.filter((seat) => seat !== seatNumber),
+    );
+  } else {
+    setSelectedSeats([...selectedSeats, seatNumber]);
+  }
+}
 
   return (
     <div className="app">
@@ -121,6 +127,23 @@ function App() {
 
               <div className="screen">SCREEN</div>
 
+              <div className="seat-legend">
+                <div>
+                <span className="legend-seat available-example"></span>
+                Available
+                </div>
+
+                <div>
+                <span className="legend-seat selected-example"></span>
+                Selected
+                </div>
+
+                <div>
+                <span className="legend-seat reserved-example"></span>
+                Unavailable
+                </div>
+</div>
+
               <div className="seat-map">
                 {seatRows.map((row) => (
                   <div className="seat-row" key={row}>
@@ -130,22 +153,29 @@ function App() {
                       { length: seatsPerRow },
                       (_, index) => {
                         const seatNumber = `${row}${index + 1}`;
-                        const isSelected =
-                          selectedSeats.includes(seatNumber);
+                        const isSelected = selectedSeats.includes(seatNumber);
+                        const isReserved = reservedSeats.includes(seatNumber);
 
                         return (
                           <button
                             key={seatNumber}
                             type="button"
                             className={`seat ${
-                              isSelected ? "selected-seat" : ""
+                              isReserved
+                              ? "reserved-seat"
+                              : isSelected
+                              ? "selected-seat"
+                              : ""
                             }`}
-                            onClick={() =>
-                              handleSeatClick(seatNumber)
-                            }
-                            aria-label={`Seat ${seatNumber}`}
-                            aria-pressed={isSelected}
-                          >
+                            onClick={() => handleSeatClick(seatNumber)}
+                              disabled={isReserved}
+                              aria-label={
+                              isReserved
+                              ? `Seat ${seatNumber} is unavailable`
+                              : `Seat ${seatNumber}`
+                              }
+                              aria-pressed={isSelected}
+                              >
                             {index + 1}
                           </button>
                         );

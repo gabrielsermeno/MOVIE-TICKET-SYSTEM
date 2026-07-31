@@ -222,3 +222,51 @@
 .seat-summary h3 {
   margin-bottom: 8px;
 }
+
+
+.seat.reserved-seat {
+  border-color: #999999;
+  background-color: #999999;
+  color: #eeeeee;
+  cursor: not-allowed;
+}
+
+.seat.reserved-seat:hover {
+  background-color: #999999;
+}
+
+.seat-legend {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.seat-legend div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-seat {
+  display: inline-block;
+  width: 28px;
+  height: 24px;
+  border: 1px solid #555555;
+  border-radius: 7px 7px 3px 3px;
+}
+
+.available-example {
+  background-color: white;
+}
+
+.selected-example {
+  border-color: #b00020;
+  background-color: #b00020;
+}
+
+.reserved-example {
+  border-color: #999999;
+  background-color: #999999;
+}
