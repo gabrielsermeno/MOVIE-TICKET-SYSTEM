@@ -86,3 +86,68 @@
 .movie-information button:hover {
   background-color: #850018;
 }
+
+.showtime-section {
+  margin-top: 40px;
+  padding: 24px;
+  border-radius: 10px;
+  background-color: white;
+  border: 1px solid #cccccc;
+}
+
+.showtime-section h2 {
+  margin-top: 0;
+}
+
+.showtime-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.showtime-button {
+  padding: 10px 18px;
+  border: 1px solid #b00020;
+  border-radius: 5px;
+  background-color: white;
+  color: #b00020;
+  cursor: pointer;
+}
+
+.showtime-button:hover {
+  background-color: #b00020;
+  color: white;
+}
+
+.showtime-button.selected {
+  background-color: #b00020;
+  color: white;
+}
+
+.showtime-selection {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #cccccc;
+}
+
+.showtime-selection h3 {
+  margin-top: 0;
+}
+
+.showtime-selection p {
+  margin: 8px 0;
+}
+
+.continue-button {
+  margin-top: 12px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #151515;
+  color: white;
+  cursor: pointer;
+}
+
+.continue-button:hover {
+  background-color: #333333;
+}
