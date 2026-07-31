@@ -1,5 +1,6 @@
 import "./App.css";
 import MovieCard from "./components/MovieCard";
+import movies from "./data/movies";
 
 function App() {
   return (
@@ -24,7 +25,14 @@ function App() {
           <h2>Movies</h2>
 
           <div className="movie-grid">
-            <MovieCard />
+            {movies.map((movie) => (
+              <MovieCard
+                key={movie.id}
+                title={movie.title}
+                rating={movie.rating}
+                runtime={movie.runtime}
+                />
+))}
           </div>
         </section>
       </main>
